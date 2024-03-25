@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block body %}
 
-
+{% load static %}
 <div class="container mt-5">
 <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -15,14 +15,25 @@
     <textarea class="form-control" name="receipe_description"></textarea>
   </div>
   <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Receipe Description</label>
+    <label for="exampleFormControlTextarea1" class="form-label">Receipe Image:</label>
     <input type="file" class="form-control" name="receipe_image">
   </div>
   <button type="submit" class="btn btn-success">Add Receipe</button>
 </form>
 
+<div class="mt-5">
+  <div class="mx-auto col-6">
+    <form>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Search Food</label>
+      <input type="text" class="form-control" name="search">
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+      <form>
+  </div>
+</div>
 
-<table class="table">
+<table class="table mt-5">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -38,9 +49,10 @@
       <th scope="row">{{forloop.counter}}</th>
       <td>{{rec.receipe_name}}</td>
       <td>{{rec.receipe_description}}</td>
-      <td>{{rec.receipe_image}}</td>
+      <td><img src="/media/{{rec.receipe_image}}" style = "height:200px"></td>
       <td>
-        <a href="/delete_rec/{{rec.id}}/" class="btn btn-danger">Delete</a>
+        <a href="/delete_rec/{{rec.id}}/" class="btn btn-danger m-2">Delete</a>
+        <a href="/update_rec/{{rec.id}}/" class="btn btn-success m-2">Update</a>
       </td>
     </tr>
     {% endfor %}
