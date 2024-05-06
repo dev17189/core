@@ -27,8 +27,6 @@ urlpatterns = [
     path('', home, name="home"),
     path('index',hom, name="index"),
     path('contact',contact, name="contact"),
-    path('delete_rec/<id>/',delete_rec, name="delete_rec"),
-    path('update_rec/<id>/',update_rec, name="update_rec"),
     path('about',about, name="about"),
     path('admin/', admin.site.urls),
     path('rec',receipes, name="receipes"),
